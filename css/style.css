@@ -1163,22 +1163,27 @@ footer .support ul li a:hover {
   color: red;
 }
 /*footer*/
+  
 @media (max-width: 400px) {
+  .img-eqp {
+    width: 100%; /* Torna a imagem ocupando 100% da largura da tela */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+
+  .carousel__slide figcaption {
+    width: 100%; /* Ajusta a largura da legenda para ocupar 100% da largura da tela */
+  }
+
+  .carousel__thumbnails {
+    margin: 0; /* Remove a margem lateral das miniaturas */
+  }
+
+  .carousel__thumbnails li {
+    max-width: 100%; /* Garante que cada miniatura ocupe 100% da largura disponível */
+  }
   figcaption{
     display: none;
   } 
-  .Eventos{
-    display: none;
-  }
-  /*.Eventos{
-    margin: 0rem  0rem  15rem  0rem;
-    width: 30rem;
-    height: 15rem;
-  }
-  .img-eqp{
-    width: 12rem;
-    height: 350px;
-  }*/
   .bio-img{
     width: 8rem;
     height: 12rem;
