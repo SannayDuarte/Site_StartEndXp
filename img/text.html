@@ -1,0 +1,175 @@
+<!--Cadastro-->
+<div class="cadastr-form col -1 d-flex align-items-end pb-2">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content p-4">
+          <!--1 modal pra cadastro-->
+
+
+          <div class="cadastro">
+            <div class="menu">
+              <section class="centro">
+
+
+                <!--FORMULÁRIOS-->
+                <h1 style="display: flex;">
+                  Cadastrar&nbsp;
+                  <span id="aluno-cad" style="display: none;">aluno</span>
+                  <span id="professor-cad" style="display: none;">professor</span>
+                  <span id="empresa-cad" style="display: none;">empresa ou escola</span>
+                </h1>
+
+                <form method="POST" id="formCadastro" action="">
+                  <input type="radio" name="tipo_pessoa" id="tipo_pessoa" value="1" onchange="cadAluno();">
+                  Aluno
+                  <input type="radio" name="tipo_pessoa" id="tipo_pessoa" value="2" onchange="cadProfessor();">
+                  Professor
+                  <input type="radio" name="tipo_pessoa" id="tipo_pessoa" value="3" onchange="cadAEmpresa();">
+                  Empresa / Escola
+                  <br><br>
+
+                  <div id="erro"></div>
+                  <br><br>
+
+                  <!--CADASTRO FORM ALUNO-->
+                  <div id="form-al" style="display: none;">
+
+                    <div id="cad" style="display: none;">
+                      <label>Usuário já cadastrado!</label>
+                    </div>
+                    <label>Nome</label>
+                    <input type="text" name="alnome" id="alnome" placeholder="Nome completo"><br><br>
+
+                    <label>Cpf</label>
+                    <input type="text" name="alcpf" id="alcpf" placeholder="CPF"><br><br>
+
+                    <label>E-mail</label>
+                    <input type="email" name="alemail" placeholder="EMAIL"><br><br>
+
+                    <label>Senha</label>
+                    <input type="password" name="alsenha" placeholder="Digite sua senha"><br><br>
+                  </div>
+                  <!--CADASTRO FORM ALUNO-->
+
+                  <!--CADASTRO FORM PROFESSOR-->
+                  <div id="form-prof" style="display: none;">
+                    <label>Nome</label>
+                    <input type="text" name="profnome" id="profnome" placeholder="Nome completo Prof"><br><br>
+
+                    <label>Cpf</label>
+                    <input type="text" name="profcpf" id="profcpf" placeholder="CPF"><br><br>
+
+                    <label>E-mail</label>
+                    <input type="email" name="profemail" id="profemail" placeholder="EMAIL"><br><br>
+
+                    <label>Senha</label>
+                    <input type="password" name="profsenha" placeholder="Digite sua senha"><br><br>
+                  </div>
+                  <!--CADASTRO FORM PROFESSOR-->
+
+                  <!--CADASTRO FORM EMPRESA-->
+                  <div id="form-emp" style="display: none;">
+                    <label>Empresa</label>
+                    <input type="text" name="emp" id="emp" placeholder="Nome completo"><br><br>
+
+                    <label>CNPJ</label>
+                    <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ"><br><br>
+
+                    <label>E-mail</label>
+                    <input type="email" name="empemail" id="empemail" placeholder="EMAIL"><br><br>
+
+                    <label>Senha</label>
+                    <input type="password" name="empsenha" id="empsenha" placeholder="Digite sua senha"><br><br>
+                  </div>
+
+                  <div id="submitForm" style="display: none;">
+                    <input type="submit" name="SendCad" value="Cadastrar"> <br><br>
+                  </div>
+                  <!--CADASTRO FORM EMPRESA-->
+                </form>
+
+                <!--FUNÇÕES DO BOTÃO-->
+                <script>
+                  function cadAluno() {
+                    // console.log("aluno");
+                    //Nome
+                    document.getElementById("aluno-cad").style.display = 'block';
+                    document.getElementById("professor-cad").style.display = 'none';
+                    document.getElementById("empresa-cad").style.display = 'none';
+                    //form
+                    document.getElementById("form-al").style.display = 'block';
+                    document.getElementById("form-prof").style.display = 'none';
+                    document.getElementById("form-emp").style.display = 'none';
+                    //botão cad
+                    document.getElementById("submitForm").style.display = 'block';
+
+
+
+                  }
+                  function cadProfessor() {
+                    // console.log("professor");
+                    //Nome
+                    document.getElementById("professor-cad").style.display = 'block';
+                    document.getElementById("aluno-cad").style.display = 'none';
+                    document.getElementById("empresa-cad").style.display = 'none';
+                    //form
+                    document.getElementById("form-prof").style.display = 'block';
+                    document.getElementById("form-al").style.display = 'none';
+                    document.getElementById("form-emp").style.display = 'none';
+                    //botão cad
+                    document.getElementById("submitForm").style.display = 'block';
+
+
+                  }
+                  function cadAEmpresa() {
+                    // console.log("empresa");
+                    //Nome
+                    document.getElementById("empresa-cad").style.display = 'block';
+                    document.getElementById("aluno-cad").style.display = 'none';
+                    document.getElementById("professor-cad").style.display = 'none';
+                    //form
+                    document.getElementById("form-emp").style.display = 'block';
+                    document.getElementById("form-al").style.display = 'none';
+                    document.getElementById("form-prof").style.display = 'none';
+                    //botão cad
+                    document.getElementById("submitForm").style.display = 'block';
+
+
+                  }
+                </script>
+                <!--FUNÇÕES DO BOTÃO-->
+
+
+                <!--VERIFICAÇÃO DE CPF E CNPJ-->
+                <script src="https://cdn.jsdelivr.net/npm/js-brasil/js-brasil.js"></script>
+                <script>
+                  $("#alcpf").on("blur", function () {
+                    let cpf_value = $(this).val();
+
+                    if (jsbrasil.validateBr.cpf(cpf_value)) {
+                    } else {
+                      alert("CPF inválido")
+                    }
+                  });
+                  $("#profcpf").on("blur", function () {
+                    let cpf_value = $(this).val();
+
+                    if (jsbrasil.validateBr.cpf(cpf_value)) {
+                    } else {
+                      alert("CPF inválido")
+                    }
+                  });
+
+                  $("#cnpj").on("blur", function () {
+                    let cnpj_value = $(this).val();
+
+                    if (jsbrasil.validateBr.cnpj(cnpj_value)) {
+
+                    } else {
+                      alert("CNPJ inválido");
+                    }
+                  });
+                </script>
+                <!--VERIFICAÇÃO DE CPF E CNPJ-->
